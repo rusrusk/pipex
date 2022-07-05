@@ -6,13 +6,13 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:19:56 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/04 12:18:40 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:34:20 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void error_info (int argc)
+void	error_info(int argc)
 {
 	if (argc < 5)
 	{
@@ -20,7 +20,6 @@ void error_info (int argc)
 		exit(1);
 	}
 }
-
 
 void	error_handle(char *message)
 {

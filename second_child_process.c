@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_child_process.c                              :+:      :+:    :+:   */
+/*   second_child_process.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 12:00:08 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/04 23:23:33 by rkultaev         ###   ########.fr       */
+/*   Created: 2022/07/04 19:29:41 by rkultaev          #+#    #+#             */
+/*   Updated: 2022/07/05 11:45:43 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	first_process(int *fd, int *pipefd, char **argv, char **env)
+void	second_process(int *fd, int *pipefd, char **argv, char **env)
 {
-	char	**command;
-	char	*proper_path_to_cmd;
-	// int 	fd[2];
-
+	char **command;
+	char *proper_path_to_cmd;
+	// int	fd[2];
 	// command = NULL;
-	// usleep(1000);
-	fd[0] = open(argv[1], O_RDONLY, 0644);
-	if (fd[0] < 0)
-	{
-		error_handle("Unable to read the file");
-		exit(1);	
-	}
-	// close(pipefd[0]);
-	dup2(fd[0], STDIN_FILENO);
-	dup2(pipefd[1], STDOUT_FILENO);
+	fd[1] = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (fd[1] < 0)
+		error_handle("Error occured while writing to outfile\n");
+	close(pipefd[1]);
+	dup2(pipefd[0], STDIN_FILENO);
+	dup2(fd[1], STDOUT_FILENO);
 	// if (!command)
-	// 	error_handle("error6");
-	command = ft_split(argv[2], 32);
-	if (!set_command_path(*command, env))
-		error_handle("error7");
+	// 	error_handle("error3");
+	command = ft_split(argv[3], 32);
+	if (!(set_command_path(*command, env)))
+		error_handle("error4");
 	proper_path_to_cmd = set_command_path(*command, env);
-	if ((execve(proper_path_to_cmd, command, env) == -1))
-	{
-		error_handle("execve system error!");
-	}
+	if (!(execve(proper_path_to_cmd, command, env) == -1))
+		error_handle("error5");
 	ft_free(command);
 	free(proper_path_to_cmd);
 	// return (fd);

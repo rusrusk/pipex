@@ -6,7 +6,7 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:14:44 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/04 18:32:06 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:34:43 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,31 +62,18 @@ char	*set_command_path(char *command, char **env)
 		free(find_slash);
 		if (access(command_path_with_slash, F_OK) == 0)
 		{
-			return(command_path_with_slash);
+			return (command_path_with_slash);
 		}
 		free(command_path_with_slash);
 		i++;
 	}
+	// if (access(command_path_with_slash, F_OK) < 0)
+	// 	perror();
 	ft_free(potential_path);
 	return (NULL);
 }
 
-int main (int argc, char **argv, char **envp)
-{
-	// int i = 0;
-	char *path;
-	
-	// error_info(argc);
-	if (argc == 2)
-	{
-	path = set_command_path(argv[1], envp);
-	printf("%s\n", path);
-	}
-	// while (path[i])
-	// {
-	// 	printf("%s\n", path[i]);
-	// }
-}
+
 
 
 // char	*set_command_path(char *command, char **env)
