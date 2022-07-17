@@ -6,7 +6,7 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:47:53 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/17 16:20:09 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/07/17 17:47:05 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include "libft_pipex/libft.h"
+# include "libft42_pipex/libft.h"
 
 # define STDIN 0
 # define STDOUT 1

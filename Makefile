@@ -6,7 +6,7 @@
 #    By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 10:25:32 by rkultaev          #+#    #+#              #
-#    Updated: 2022/07/17 17:22:41 by rkultaev         ###   ########.fr        #
+#    Updated: 2022/07/17 17:47:39 by rkultaev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ BLUE 		:= \033[0;34m
 PURPLE		:= \033[0;35m
 B_PURPLE	:= \033[1;35m
 
-LIBFTA = libft_pipex/libft.a
+LIBFTA = libft42_pipex/libft.a
 
 SRCS = pipex.c find_path_env.c error.c free.c  first_child_process.c \
 		second_child_process.c main.c 
@@ -41,12 +41,12 @@ CFLAGS = -Wall -Werror -Wextra
 
 
 $(NAME) : $(OBJ) $(HEADER)
-		make bonus -C libft_pipex/
+		make bonus -C libft42_pipex/
 		$(CC) $(CFLAGS) $(OBJ) $(LIBFTA) -o $(NAME)
 		@echo "$(B_GREEN) COMPILATION OF MANDATORY PART: DONE $(NC)"
 
 bonus : $(BONUS_OBJECTS) $(HEADER)
-		make bonus -C libft_pipex/
+		make bonus -C libft42_pipex/
 		$(CC) $(CFLAGS) $(BONUS_OBJECTS) $(OBJ) $(LIBFTA) -o $(NAME)
 		@echo "$(B_BLUE) COMPILATION OF BONUS PART: DONE $(NC)"
 
@@ -57,11 +57,11 @@ $(BONUS_OBJECTS): $(SRCS) $(BONUS_SRCS)
 
 clean:
 		rm -f $(OBJ) $(BONUS_OBJECTS)
-		make clean -C libft_pipex/
+		make clean -C libft42_pipex/
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C libft_pipex/
+	make fclean -C libft42_pipex/
 
 re : fclean all
 
