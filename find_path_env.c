@@ -6,21 +6,16 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:14:44 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/05 11:34:43 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/07/17 15:46:08 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// int is_include_path(char *string)
-// {
-// 	return ft_strnstr(string, "PATH=", 5);
-// }
-
-
-int	find_path_var (char **str)
+int	find_path_var(char **str)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (ft_strnstr(str[i], "PATH=", 5) == 0)
 	{
@@ -29,19 +24,15 @@ int	find_path_var (char **str)
 	return (i);
 }
 
-char **path_to_env( char **envp)
+char	**path_to_env( char **envp)
 {
-		int	i;
-		// char	*road_path;
-		char **path_variations;
+	int		i;
+	char	**path_variations;
 
-		i = 0;
-		i = find_path_var(envp);
-		// road_path = ft_substr(envp[i], 5, ft_strlen(envp[i]));
-		path_variations = ft_split(envp[i] + 5, ':');
-		// free(road_path);
-		// printf("Nice");
-		return (path_variations);
+	i = 0;
+	i = find_path_var(envp);
+	path_variations = ft_split(envp[i] + 5, ':');
+	return (path_variations);
 }
 
 char	*set_command_path(char *command, char **env)
@@ -52,8 +43,6 @@ char	*set_command_path(char *command, char **env)
 	int		i;
 
 	i = 0;
-	// if (!path_to_env)
-	// 	error_handle("Error!");
 	potential_path = path_to_env(env);
 	while (potential_path[i])
 	{
@@ -67,35 +56,6 @@ char	*set_command_path(char *command, char **env)
 		free(command_path_with_slash);
 		i++;
 	}
-	// if (access(command_path_with_slash, F_OK) < 0)
-	// 	perror();
 	ft_free(potential_path);
 	return (NULL);
 }
-
-
-
-
-// char	*set_command_path(char *command, char **env)
-// {
-// 	int	i;
-// 	char	*cmd_with_path;
-// 	char **potential_path;
-
-// 	i = 0;
-// 	potential_path = path_to_env(env);
-// 	while (potential_path[i])
-// 	{
-// 		cmd_with_path = ft_strjoin(path_with_slash(env), command);
-// 		if (access(cmd_with_path, F_OK) == 0)
-// 		{
-// 			return (cmd_with_path);
-// 		}
-// 		free(cmd_with_path);
-// 		i++;
-// 	}
-// 	ft_free(potential_path);
-// 	return (NULL);
-// }
-
-

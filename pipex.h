@@ -6,7 +6,7 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:47:53 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/05 11:38:39 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/07/17 16:20:09 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # include <stdlib.h>
 # include "libft_pipex/libft.h"
 
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
+
 int		find_path_var(char **str);
 char	**path_to_env( char **envp);
 void	error_info(int argc);
@@ -34,5 +38,8 @@ char	*set_command_path(char *command, char **env);
 void	first_process(int *fd, int *pipefd, char **argv, char **env);
 void	second_process(int *fd, int *pipefd, char **argv, char **env);
 void	pipex(int *fd, int *pipefd, char **argv, char **envp);
+
+void	check_commands(int argc, char **argv, char **env);
+void	here_doc(char *argv[]);
 
 #endif
