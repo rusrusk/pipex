@@ -6,13 +6,13 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 22:10:26 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/16 12:23:21 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/07/17 19:34:08 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc2(size_t count, size_t size)
 {
 	char	*ptr;
 	size_t	i;
@@ -31,7 +31,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
-size_t	ft_strlen(const char *c)
+size_t	ft_strlen2(const char *c)
 {
 	size_t	i;
 
@@ -43,7 +43,7 @@ size_t	ft_strlen(const char *c)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr2(const char *s, int c)
 {
 	int	i;
 
@@ -65,7 +65,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin2(char const *s1, char const *s2)
 {
 	int		i;
 	int		j;
@@ -94,7 +94,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (ptr);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr2(char const *s, unsigned int start, size_t len)
 {
 	size_t		i;
 	char		*ptr;
