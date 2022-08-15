@@ -6,39 +6,29 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 10:06:25 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/17 14:28:36 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/08/15 16:01:29 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
-void	pipex(int *fd, int *pipefd, char **argv, char **envp)
+int	pipex(t_data *data, char **argv, char **envp)
 {
-	pid_t	child1;
-	pid_t	child2;
-
-	child1 = fork();
-	if (child1 < 0)
-	{
-		error_handle("error while forking ----> 1\n");
-	}
-	if (child1 == 0)
-	{
-		first_process(fd, pipefd, argv, envp);
-	}
-	waitpid(child1, NULL, 0);
-	child2 = fork();
-	if (child2 < 0)
-	{
-		error_handle("error while forking ----> 2\n");
-	}
-	if (child2 == 0)
-	{
-		second_process(fd, pipefd, argv, envp);
-	}
-	close (pipefd[0]);
-	close (pipefd[1]);
-	waitpid(child2, NULL, 0);
+	data->child1 = fork();
+	if (data->child1 < 0)
+		prompt_system_error();
+	if (data->child1 == 0)
+		first_process(data, argv, envp);
+	data->child2 = fork();
+	if (data->child2 < 0)
+		prompt_system_error();
+	if (data->child2 == 0)
+		second_process(data, argv, envp);
+	close(data->pipefd[0]);
+	close(data->pipefd[1]);
+	waitpid(data->child1, NULL, 0);
+	waitpid(data->child2, NULL, 0);
+	return (SUCCESS);
 }
 
 /*

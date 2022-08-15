@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 11:57:12 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/04 11:59:16 by rkultaev         ###   ########.fr       */
+/*   Created: 2022/08/15 15:58:18 by rkultaev          #+#    #+#             */
+/*   Updated: 2022/08/15 16:00:12 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex_bonus.h"
 
-void	ft_free(char **str)
+int	prompt_system_error(void)
 {
-	int	i;
+	printf("Error number is: %d\n", errno);
+	printf("Error description is : %s\n", strerror(errno));
+	return (ERROR);
+}
 
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	if (str)
-		free(str);
+void	prompt_error_message(void)
+{
+	ft_putstr_fd("\033[31mERROR: Bad argument\n\e[0m", 2);
+	exit(SUCCESS);
 }

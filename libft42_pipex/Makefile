@@ -6,7 +6,7 @@
 #    By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 14:27:16 by rkultaev          #+#    #+#              #
-#    Updated: 2022/07/16 12:22:50 by rkultaev         ###   ########.fr        #
+#    Updated: 2022/08/15 14:19:58 by rkultaev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,18 +38,18 @@ CFLAGS = -Wall -Wextra -Werror -I $(HEADER)
 
 
 $(NAME) : $(OBJ) $(HEADER)
-	ar rcs $(NAME) $(OBJ)
+	ar rcs $(CFLAGS) $(NAME) $(OBJ)
 
 bonus : $(OBJ) $(bonus_objects) $(HEADER)
-	ar rcs $(NAME) $(OBJ) $(bonus_objects)
+	@ar rcs $(NAME) $(OBJ) $(bonus_objects)
 
 all : $(NAME)
 
 clean :
-	rm -f $(OBJ) $(bonus_objects)
+	@rm -f $(OBJ) $(bonus_objects)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re:	fclean all
 

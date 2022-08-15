@@ -6,11 +6,11 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:14:44 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/17 15:46:08 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/08/15 16:01:11 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 int	find_path_var(char **str)
 {
@@ -49,10 +49,10 @@ char	*set_command_path(char *command, char **env)
 		find_slash = ft_strjoin(potential_path[i], "/");
 		command_path_with_slash = ft_strjoin(find_slash, command);
 		free(find_slash);
-		if (access(command_path_with_slash, F_OK) == 0)
-		{
+		if (access(command_path_with_slash, F_OK) == ERROR)
+			prompt_system_error();
+		else
 			return (command_path_with_slash);
-		}
 		free(command_path_with_slash);
 		i++;
 	}

@@ -6,31 +6,29 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 12:00:08 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/17 16:04:28 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/08/15 16:01:16 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
-void	first_process(int *fd, int *pipefd, char **argv, char **env)
+void	first_process(t_data *data, char **argv, char **env)
 {
-	char	**command;
-	char	*proper_path_to_cmd;
-
-	fd[0] = open(argv[1], O_RDONLY, 0644);
-	if (fd[0] < 0)
+	data->infile = open(argv[1], O_RDONLY);
+	if (data->infile == ERROR)
 	{
-		error_handle("Unable to read the file");
+		prompt_system_error();
 	}
-	close(pipefd[0]);
-	dup2(fd[0], STDIN_FILENO);
-	dup2(pipefd[1], STDOUT_FILENO);
-	command = ft_split(argv[2], 32);
-	if (!set_command_path(*command, env))
-		error_handle("invalid command <---- 4");
-	proper_path_to_cmd = set_command_path(*command, env);
-	if (execve(proper_path_to_cmd, command, env) == -1)
-		error_handle("execve system error! <---- 5");
-	ft_free(command);
-	free(proper_path_to_cmd);
+	dup2(data->pipefd[1], STDOUT_FILENO);
+	close(data->pipefd[0]);
+	dup2(data->infile, STDIN_FILENO);
+	close(data->infile);
+	data->command = ft_split(argv[2], 32);
+	if (!set_command_path(*data->command, env))
+		error_handle(COMMAND_ERROR);
+	data->proper_path_to_cmd = set_command_path(*data->command, env);
+	if (execve(data->proper_path_to_cmd, data->command, env) == -1)
+		prompt_system_error();
+	ft_free(data->command);
+	free(data->proper_path_to_cmd);
 }
