@@ -6,7 +6,7 @@
 #    By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 14:27:16 by rkultaev          #+#    #+#              #
-#    Updated: 2022/08/15 14:19:58 by rkultaev         ###   ########.fr        #
+#    Updated: 2022/08/16 21:39:40 by rkultaev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ CFLAGS = -Wall -Wextra -Werror -I $(HEADER)
 
 
 $(NAME) : $(OBJ) $(HEADER)
-	ar rcs $(CFLAGS) $(NAME) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 bonus : $(OBJ) $(bonus_objects) $(HEADER)
 	@ar rcs $(NAME) $(OBJ) $(bonus_objects)
