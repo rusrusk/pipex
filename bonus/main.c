@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:59:04 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/08/15 15:59:53 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/08/16 23:29:20 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv, char **envp)
 		{
 			source.idx = 3;
 			source.outfile = open_file(argv[argc - 1], 0);
-			here_doc(&source, argv[2], argc);
+			here_doc(&source, argc, argv[2]);
 		}
 		else
 		{

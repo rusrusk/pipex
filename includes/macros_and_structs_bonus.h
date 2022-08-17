@@ -6,7 +6,7 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 19:38:10 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/08/15 13:13:22 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/08/16 23:14:12 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@
 # define INPUT_ERROR "Invalid number of arguments!"
 # define COMMAND_ERROR "Error: command not found!"
 
-enum	e_standard_value
-{
-	STDIN = 0,
-	STDOUT = 1,
-	STDERR = 2,
-};
+// enum	e_standard_value
+// {
+// 	STDIN = 0,
+// 	STDOUT = 1,
+// 	STDERR = 2,
+// };
 
-enum e_return
-{
-	ERROR = -1,
-	SUCCESS = 0,
-};
+// enum e_return
+// {
+// 	ERROR = -1,
+// 	SUCCESS = 0,
+// };
 
 typedef struct e_source
 {
@@ -41,7 +41,7 @@ typedef struct e_source
 	int		idx;
 	int		infile;
 	int		outfile;	
-	int		pipefd;
+	int		pipefd[2];
 }	t_source;
 
 #endif

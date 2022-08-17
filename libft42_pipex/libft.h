@@ -6,7 +6,7 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:53:01 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/17 19:35:03 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/08/16 23:17:51 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ char	*ft_strchr2(const char *s, int c);
 size_t	ft_strlen2(const char *c);
 void	*ft_calloc2(size_t count, size_t size);
 char	*handling_static_with_temp(char *ptr_buffer, char *static_buff);
-char	*get_next_line(int fd);
+char	*get_next_line(char *line_output);
 
 #endif

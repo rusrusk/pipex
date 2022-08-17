@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   here_doc.c                                         :+:      :+:    :+:   */
+/*   here_doc_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:56:55 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/08/15 16:00:16 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/08/16 23:18:10 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	here_doc(t_source *source, int argc, char *limiter)
 	if (source->pid == 0)
 	{
 		close(source->infile);
-		while (get_next_line(&source->line))
+		while (get_next_line(source->line))
 		{
 			if (ft_strncmp(source->line, limiter, ft_strlen(limiter)) == SUCCESS)
 				exit(SUCCESS);

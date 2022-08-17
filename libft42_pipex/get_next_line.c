@@ -6,7 +6,7 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 12:13:50 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/07/17 16:23:23 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/08/16 23:36:29 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,13 @@ static char	*read_data(char *static_buff, int fd)
 	return (static_buff);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(char *line_output)
 {
-	char		*line_output;
+	// char		*line_output;
+	int			fd;
 	static char	*bucket;
 
+	fd = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	bucket = read_data(bucket, fd);

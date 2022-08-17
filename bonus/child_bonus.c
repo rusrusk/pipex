@@ -6,11 +6,12 @@
 /*   By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:42:36 by rkultaev          #+#    #+#             */
-/*   Updated: 2022/08/15 16:24:11 by rkultaev         ###   ########.fr       */
+/*   Updated: 2022/08/16 23:37:22 by rkultaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
+#include "../includes/pipex.h"
 
 void	execute(t_source *source, char *argv, char **env)
 {

@@ -6,7 +6,7 @@
 #    By: rkultaev <rkultaev@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 20:52:02 by rkultaev          #+#    #+#              #
-#    Updated: 2022/08/16 22:27:40 by rkultaev         ###   ########.fr        #
+#    Updated: 2022/08/17 09:39:50 by rkultaev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT				=			libft42_pipex/libft.a
 CC					=			gcc
 CFLAGS				=			-Wall -Werror -Wextra
 RM					=			rm -f
-HEADER				=			-Iincludes
+# HEADER				=			-Iincludes
 
 
 HEADER_SRCS			= 			pipex.h pipex_bonus.h
@@ -32,7 +32,8 @@ MPATH				=			$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJS_MANDATORY		=			$(MPATH:.c=.o)
 
 BPATH_SRCS			=			child_bonus.c error_bonus.c process_files_bonus.c \
-								here_doc_bonus.c main.c 
+								here_doc_bonus.c main.c ../src/find_path_env.c \
+								../src/free.c
 BPATH_DIR			=			./bonus/
 BPATH				=			$(addprefix $(BPATH_DIR), $(BPATH_SRCS))
 OBJS_BONUS			=			$(BPATH:.c=.o)
@@ -43,7 +44,7 @@ all: $(EXEC) #$(LIBFT_EXEC)
 
 bonus: $(EXEC_BONUS) #$(LIBFT_EXEC)
 
-%.o : %.c 
+%.o : %.c $(HEADER) Makefile
 					@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 
 # $(LIBFT_EXEC) : 
